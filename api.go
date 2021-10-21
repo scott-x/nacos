@@ -2,7 +2,7 @@
 * @Author: scottxiong
 * @Date:   2021-10-20 17:51:18
 * @Last Modified by:   scottxiong
-* @Last Modified time: 2021-10-20 21:17:28
+* @Last Modified time: 2021-10-21 18:01:32
  */
 package nacos
 
@@ -10,10 +10,10 @@ import (
 	"errors"
 	"time"
 
-	"github.com/nacos-group/nacos-sdk-go/clients"
-	"github.com/nacos-group/nacos-sdk-go/clients/config_client"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
+	"github.com/scott-x/nacos/clients"
+	"github.com/scott-x/nacos/clients/config_client"
 )
 
 var (
@@ -111,7 +111,7 @@ func initClient(c *Config) {
 		CacheDir:            "tmp/nacos/cache",
 		RotateTime:          "1h",
 		MaxAge:              3,
-		LogLevel:            "",// default info if empty
+		LogLevel:            "", // default info if empty
 	}
 
 	configClient, err = clients.CreateConfigClient(map[string]interface{}{
