@@ -111,7 +111,7 @@ func initClient(c *Config) {
 		CacheDir:            "tmp/nacos/cache",
 		RotateTime:          "1h",
 		MaxAge:              3,
-		LogLevel:            "debug",
+		LogLevel:            "",// default info if empty
 	}
 
 	configClient, err = clients.CreateConfigClient(map[string]interface{}{
