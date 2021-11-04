@@ -8,8 +8,8 @@
 - `func InitConfig(ip string, port int, namespaceId string) *Config`
 - `func (c *Config) NewGroup(name, id string) *Group`
 - `func (g *Group) GetConfig() string`
-- `func PublishConfig(g *Group, conf string) (bool, error)`
-- `func DeleteConfig(g *Group) (bool, error)`
+- `func (g *Group) PublishConfig(conf string) (bool, error)`
+- `func (g *Group) DeleteConfig() (bool, error) `
 
 ### Get Started
 

@@ -2,7 +2,7 @@
 * @Author: scottxiong
 * @Date:   2021-10-20 17:51:18
 * @Last Modified by:   scottxiong
-* @Last Modified time: 2021-11-05 05:16:46
+* @Last Modified time: 2021-11-05 05:26:47
  */
 package nacos
 
@@ -53,6 +53,21 @@ func (g *Group) GetConfig() string {
 		g.setConf()
 	}
 	return g.content
+}
+
+//publish config
+func (g *Group) PublishConfig(conf string) (bool, error) {
+	return configClient.PublishConfig(vo.ConfigParam{
+		DataId:  g.DataId,
+		Group:   g.Name,
+		Content: conf})
+}
+
+//delete config
+func (g *Group) DeleteConfig() (bool, error) {
+	return configClient.DeleteConfig(vo.ConfigParam{
+		DataId: g.DataId,
+		Group:  g.Name})
 }
 
 func (c *Config) NewGroup(name, id string) *Group {
@@ -137,19 +152,4 @@ func InitConfig(ip string, port int, namespaceId string) *Config {
 	initClient(c)
 
 	return c
-}
-
-//publish config
-func PublishConfig(g *Group, conf string) (bool, error) {
-	return configClient.PublishConfig(vo.ConfigParam{
-		DataId:  g.DataId,
-		Group:   g.Name,
-		Content: conf})
-}
-
-//delete config
-func DeleteConfig(g *Group) (bool, error) {
-	return configClient.DeleteConfig(vo.ConfigParam{
-		DataId: g.DataId,
-		Group:  g.Name})
 }
